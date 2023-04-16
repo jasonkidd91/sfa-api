@@ -15,7 +15,7 @@ public class CorsConfiguration implements WebMvcConfigurer {
     public void addCorsMappings(CorsRegistry registry) {
         if ("dev".equals(activeProfile)) {
             registry.addMapping("/**") // Allow CORS for all endpoints
-                    .allowedOrigins("http://localhost:3000") // Allow requests from localhost:3000
+                    .allowedOrigins("http://localhost:3000", "https://sfa-ui-jasonkidd91.vercel.app") // Allow requests from localhost:3000
                     .allowedMethods("GET", "POST", "PUT", "DELETE") // Allow specified HTTP methods
                     .allowedHeaders("*") // Allow all headers
                     .allowCredentials(true); // Allow credentials (e.g., cookies)
