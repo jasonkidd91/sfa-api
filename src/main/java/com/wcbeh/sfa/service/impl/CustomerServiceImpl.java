@@ -50,11 +50,11 @@ public class CustomerServiceImpl implements CustomerService {
         for (CustomerPortfolio customerPortfolio : customerPortfolios) {
             CustomerPortfolioDto customerPortfolioDto = modelMapper.map(customerPortfolio, CustomerPortfolioDto.class);
             BigDecimal balance = transactionRepository.sumBalanceByCustomerPortfolio(
-                    customerPortfolio.getPortfolio().getPortfolioId(),
+                    customerPortfolio.getCustomerPortfolioId(),
                     customerPortfolio.getCustomer().getCustomerId());
 
             BigDecimal investmentReturns = transactionRepository.sumInvestmentReturnsByCustomerPortfolio(
-                    customerPortfolio.getPortfolio().getPortfolioId(),
+                    customerPortfolio.getCustomerPortfolioId(),
                     customerPortfolio.getCustomer().getCustomerId(),
                     TransactionType.FLOATING.toString());
 

@@ -12,7 +12,7 @@ public class BusinessExceptionHandler {
 
     @ExceptionHandler(BusinessException.class)
     public ResponseEntity<ApiError> handleBusinessException(BusinessException ex) {
-        ApiError apiError = new ApiError(HttpStatus.BAD_REQUEST, ex.getMessage(), ex.getErrorCode());
+        ApiError apiError = new ApiError(HttpStatus.BAD_REQUEST, ex.getMessage(), ex.getErrorCode(), null);
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(apiError);
     }
 

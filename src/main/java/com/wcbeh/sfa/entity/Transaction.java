@@ -21,8 +21,8 @@ public class Transaction {
     private Customer customer;
 
     @ManyToOne
-    @JoinColumn(name = "portfolio_id")
-    private Portfolio portfolio;
+    @JoinColumn(name = "customer_portfolio_id")
+    private CustomerPortfolio customerPortfolio;
 
     @Column(name = "transaction_amount")
     private BigDecimal transactionAmount;

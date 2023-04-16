@@ -10,12 +10,12 @@ VALUES ('Retirement', 'Simple Retirement Portfolio'),
 
 -- Insert sample data into customer_portfolio table
 INSERT INTO customer_portfolio (customer_id, portfolio_id, balance)
-VALUES (1, 1, 10000.00),
-       (1, 2, 5000.00),
-       (2, 1, 7500.00);
+VALUES (1, 1, 545.00),
+       (1, 2, 920.00),
+       (2, 1, 250.00);
 
 -- Insert sample data into transaction table
-INSERT INTO transaction (customer_id, portfolio_id, transaction_amount, transaction_date, transaction_type, transaction_status)
+INSERT INTO transaction (customer_id, customer_portfolio_id, transaction_amount, transaction_date, transaction_type, transaction_status)
 VALUES (1, 1, 500.00, CURRENT_TIMESTAMP, 'DEPOSIT', 'COMPLETED'),
        (1, 1, 10.00, CURRENT_TIMESTAMP, 'FLOATING', 'COMPLETED'),
        (1, 1, 15.00, CURRENT_TIMESTAMP, 'FLOATING', 'COMPLETED'),
@@ -23,7 +23,7 @@ VALUES (1, 1, 500.00, CURRENT_TIMESTAMP, 'DEPOSIT', 'COMPLETED'),
        (1, 2, 1000.00, CURRENT_TIMESTAMP, 'DEPOSIT', 'COMPLETED'),
        (1, 2, -50.00, CURRENT_TIMESTAMP, 'FLOATING', 'COMPLETED'),
        (1, 2, -30.00, CURRENT_TIMESTAMP, 'FLOATING', 'COMPLETED'),
-       (2, 1, -250.00, CURRENT_TIMESTAMP, 'DEPOSIT', 'COMPLETED');
+       (2, 3, 250.00, CURRENT_TIMESTAMP, 'DEPOSIT', 'COMPLETED');
 
 -- Insert sample data into payment_method table
 INSERT INTO payment_method (payment_id, payment_name, is_active) VALUES

@@ -8,6 +8,8 @@ import java.util.List;
 @Data
 public class CustomerPortfolioOverviewDto {
 
+    Long customerId;
+    String customerName;
     List<CustomerPortfolioDto> customerPortfolios;
     BigDecimal totalValue;
     BigDecimal totalInvestmentReturns;

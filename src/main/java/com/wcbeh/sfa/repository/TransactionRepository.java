@@ -12,21 +12,21 @@ import java.util.List;
 @Repository
 public interface TransactionRepository extends JpaRepository<Transaction, Long> {
 
-    List<Transaction> findByCustomer_CustomerId(Long customerId);
+    List<Transaction> findByCustomer_CustomerIdOrderByTransactionDateDesc(Long customerId);
 
     @Query("SELECT SUM(t.transactionAmount) FROM Transaction t " +
-            " WHERE t.portfolio.portfolioId = :portfolioId" +
+            " WHERE t.customerPortfolio.customerPortfolioId = :customerPortfolioId" +
             " AND t.customer.customerId = :customerId")
     BigDecimal sumBalanceByCustomerPortfolio(
-            @Param("portfolioId") Long portfolioId,
+            @Param("customerPortfolioId") Long customerPortfolioId,
             @Param("customerId") Long customerId);
 
     @Query("SELECT SUM(t.transactionAmount) FROM Transaction t " +
-            " WHERE t.portfolio.portfolioId = :portfolioId" +
+            " WHERE t.customerPortfolio.customerPortfolioId = :customerPortfolioId" +
             " AND t.customer.customerId = :customerId" +
             " AND t.transactionType = :transactionType")
     BigDecimal sumInvestmentReturnsByCustomerPortfolio(
-            @Param("portfolioId") Long portfolioId,
+            @Param("customerPortfolioId") Long customerPortfolioId,
             @Param("customerId") Long customerId,
             @Param("transactionType") String transactionType);
 

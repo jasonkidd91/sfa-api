@@ -9,6 +9,7 @@ import com.wcbeh.sfa.entity.*;
 import com.wcbeh.sfa.exception.BusinessException;
 import com.wcbeh.sfa.repository.*;
 import com.wcbeh.sfa.service.PaymentService;
+import jakarta.transaction.Transactional;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -56,6 +57,7 @@ public class PaymentServiceImpl implements PaymentService {
                 .collect(Collectors.toList());
     }
 
+    @Transactional
     @Override
     public CustomerTransactionDto createCustomerTransaction(CreateCustomerTransactionDto createTransactionDto) {
         Customer customer = customerRepository.findById((long) 1)
@@ -98,7 +100,7 @@ public class PaymentServiceImpl implements PaymentService {
     @Override
     public List<TransactionHistoryDto> getTransactionHistory(Long customerId) {
         // Retrieve the current customer transactions from the service
-        List<Transaction> transactions = transactionRepository.findByCustomer_CustomerId(customerId);
+        List<Transaction> transactions = transactionRepository.findByCustomer_CustomerIdOrderByTransactionDateDesc(customerId);
 
         // Map the entities to DTOs
         return transactions.stream()

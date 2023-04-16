@@ -30,14 +30,14 @@ CREATE TABLE customer_portfolio (
 CREATE TABLE transaction (
     transaction_id INT PRIMARY KEY AUTO_INCREMENT,
     customer_id INT NOT NULL,
-    portfolio_id INT NOT NULL,
+    customer_portfolio_id INT NOT NULL,
     transaction_amount DECIMAL(10, 2) NOT NULL,
     transaction_date TIMESTAMP NOT NULL,
     transaction_type VARCHAR(50) NOT NULL,
     transaction_status VARCHAR(50) NOT NULL,
     -- Add other transaction columns as needed
     FOREIGN KEY (customer_id) REFERENCES customer(customer_id),
-    FOREIGN KEY (portfolio_id) REFERENCES portfolio(portfolio_id)
+    FOREIGN KEY (customer_portfolio_id) REFERENCES customer_portfolio(customer_portfolio_id)
 );
 
 -- Create payment_method table
